@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkkaTextAnalizator", "AkkaTextAnalizator\AkkaTextAnalizator.csproj", "{DDE1CC20-3897-4C81-9CCC-2EC18C0F5A2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkkaTextAnalizatorCommon", "AkkaTextAnalizator.Common\AkkaTextAnalizatorCommon.csproj", "{D16CCD58-8E38-41FF-A273-BE906EE4A4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadTextAnalizer", "ThreadTextAnalizer\ThreadTextAnalizer.csproj", "{C631FDFF-3FE3-4978-AA2C-EB81A72961E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalizator.Remote", "TextAnalizator.Remote\TextAnalizator.Remote.csproj", "{2917DEC7-1E20-450B-9D62-268598BBD926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalizator.Remote1", "AkkaAnalizator.Remote1\TextAnalizator.Remote1.csproj", "{4B3D0567-D4E7-44E0-8A37-5CA010C5C1DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalizator.Remote2", "TextAnalizator.Remote2\TextAnalizator.Remote2.csproj", "{A2127BF7-BF32-42A3-A696-9A8BBB067C5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDE1CC20-3897-4C81-9CCC-2EC18C0F5A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE1CC20-3897-4C81-9CCC-2EC18C0F5A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE1CC20-3897-4C81-9CCC-2EC18C0F5A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE1CC20-3897-4C81-9CCC-2EC18C0F5A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16CCD58-8E38-41FF-A273-BE906EE4A4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16CCD58-8E38-41FF-A273-BE906EE4A4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16CCD58-8E38-41FF-A273-BE906EE4A4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16CCD58-8E38-41FF-A273-BE906EE4A4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C631FDFF-3FE3-4978-AA2C-EB81A72961E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C631FDFF-3FE3-4978-AA2C-EB81A72961E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C631FDFF-3FE3-4978-AA2C-EB81A72961E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C631FDFF-3FE3-4978-AA2C-EB81A72961E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2917DEC7-1E20-450B-9D62-268598BBD926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2917DEC7-1E20-450B-9D62-268598BBD926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2917DEC7-1E20-450B-9D62-268598BBD926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2917DEC7-1E20-450B-9D62-268598BBD926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B3D0567-D4E7-44E0-8A37-5CA010C5C1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3D0567-D4E7-44E0-8A37-5CA010C5C1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3D0567-D4E7-44E0-8A37-5CA010C5C1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3D0567-D4E7-44E0-8A37-5CA010C5C1DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2127BF7-BF32-42A3-A696-9A8BBB067C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2127BF7-BF32-42A3-A696-9A8BBB067C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2127BF7-BF32-42A3-A696-9A8BBB067C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2127BF7-BF32-42A3-A696-9A8BBB067C5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
