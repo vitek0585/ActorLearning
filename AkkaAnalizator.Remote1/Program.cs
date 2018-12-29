@@ -12,7 +12,7 @@ namespace AkkaAnalizator.Remote1
             Console.WriteLine("Creating AnalizeTextActorSystem 1 in remote process");
 
             AnalizeTextActorSystem = ActorSystem.Create("AnalazerActorSystem");
-            AnalizeTextActorSystem.ActorOf(Props.Create<SupervisionActor>(), "SupervisionActor");
+            //AnalizeTextActorSystem.ActorOf(Props.Create<SupervisionActor>(), "SupervisionActor");
             Console.ReadLine();
             AnalizeTextActorSystem.Terminate().Wait();
         }

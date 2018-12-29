@@ -22,19 +22,19 @@ namespace AkkaTextAnalizator
            // Thread.Sleep(3000);
             var sp = actorSystem.ActorOf(Props.Create<SupervisionActor>(), "SupervisionActor");
             
-            // var analizatorCoordinatorActor = actorSystem.ActorOf(Props.Create<AnalizatorCoordinatorActor>(), "AnalizatorCoordinatorActor");
+            //var analizatorCoordinatorActor = actorSystem.ActorOf(Props.Create<AnalizatorCoordinatorActor>(), "AnalizatorCoordinatorActor");
             
             var startNew = Stopwatch.StartNew();
             //var group = actorSystem.ActorOf(Props.Create<GroupActor>(), "GroupActor");
             startNew.Start();
             //group.Tell("start");
 
-            foreach (var textMessage in new TextMessageStorage().Get(20))
+            foreach (var textMessage in new TextMessageStorage().Get(200))
             {
                 Console.ReadKey();
                 Thread.Sleep(1000);
-                //actorSystem.ActorSelection("/user/SupervisionActor/AnalizatorCoordinatorActor").Tell(textMessage);
-                sp.Tell(textMessage);
+                actorSystem.ActorSelection("/user/SupervisionActor/AnalizatorCoordinatorActor").Tell(textMessage);
+                //sp.Tell(textMessage);
             }
 
             actorSystem.WhenTerminated.Wait();
