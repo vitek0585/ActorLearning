@@ -183,6 +183,7 @@
     <Compile Include="Messages\TextMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AnalizatorEngine.cs" />
+    <Compile Include="Utils\ColorConsole.cs" />
     <Compile Include="Utils\TextMessageStorage.cs" />
   </ItemGroup>
   <ItemGroup>
