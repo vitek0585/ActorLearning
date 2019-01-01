@@ -1,5 +1,6 @@
 ﻿using System;
 using Akka.Actor;
+using Akka.Cluster;
 using Akka.Routing;
 using AkkaTextAnalizatorCommon.Messages;
 using AkkaTextAnalizatorCommon.Utils;
@@ -9,17 +10,27 @@ namespace AkkaTextAnalizatorCommon.Actors
     public class SupervisionActor : ReceiveActor
     {
         private int msg = 20;
+        protected Akka.Cluster.Cluster Cluster = Akka.Cluster.Cluster.Get(Context.System);
+
         public SupervisionActor()
         {
             var a = Context.ActorOf(Props.Create<AnalizatorCoordinatorActor>().WithRouter(FromConfig.Instance), "AnalizatorCoordinatorActor");
+            Context.Watch(a);
+            
+            Cluster.Subscribe(a, ClusterEvent.SubscriptionInitialStateMode.InitialStateAsEvents,
+            new[]{ typeof(ClusterEvent.IMemberEvent)});
 
+            Receive<Terminated>(r =>
+            {
+                ColorConsole.WriteLineRed(r.ActorRef.Path + " Terminated");
+            });
             //Receive<TextMessage>(m => a.Tell(m,Self));
             Receive<TextMessage>(m =>
             {
                 try
                 {
-                throw new Exception("1234");
-                    Sender.Tell(a.Ask(m, TimeSpan.FromSeconds(10)).Result);
+                    //Sender.Tell(a.Ask(m, TimeSpan.FromSeconds(10)).Result);
+                    a.Forward(m);
 
                 }
                 catch (Exception e)
@@ -30,23 +41,25 @@ namespace AkkaTextAnalizatorCommon.Actors
 
             });
 
-            //Context.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), "AnalizatorCoordinatorActor");
-            //Context.ActorOf(Props.Create<AnalizatorCoordinatorActor>(), "AnalizatorCoordinatorActor");
-            //Receive<int>(id =>
-            //{
-            //   // Console.WriteLine($"Complete {--msg} id- {id}");
-            //    if (--msg == 0)
-            //    {
-            //        Console.WriteLine("SupervisionActor Terminate");
-            //        Context.System.Terminate();
-            //    }
-            //});
+            Receive<int>(id =>
+            {
+                // Console.WriteLine($"Complete {--msg} id- {id}");
+                if (--msg == 0)
+                {
+                    Console.WriteLine("SupervisionActor Terminate");
+                    Context.System.Terminate();
+                }
+            });
 
             Receive<int>(id =>
             {
                 //Console.WriteLine($"Send {id}");
                 Context.Parent.Tell(id);
             });
+
+            //Receive<ClusterEvent.MemberUp>(o => { OnReceiveActorMessage(o); });
+            Receive<ClusterEvent.UnreachableMember>(o => { OnReceiveActorMessage(o); });
+           Receive<ClusterEvent.IMemberEvent>(o => { OnReceiveActorMessage(o); });
         }
 
         protected override SupervisorStrategy SupervisorStrategy()
@@ -58,7 +71,7 @@ namespace AkkaTextAnalizatorCommon.Actors
                     if (exception is ArgumentException)
                     {
                         Console.WriteLine("Exception SupervisionActor");
-                        return Directive.Stop;
+                        return Directive.Resume;
                     }
                     //if (exception is Exception)
                     //{
@@ -93,6 +106,27 @@ namespace AkkaTextAnalizatorCommon.Actors
             ColorConsole.WriteMagenta("SupervisionActor PostRestart because: {0} ", reason.Message);
 
             base.PostRestart(reason);
+        }
+
+
+        protected void OnReceiveActorMessage(object message)
+        {
+            var up = message as ClusterEvent.MemberUp;
+            if (up != null)
+            {
+                var mem = up;
+                Console.WriteLine("Member is Up: {0}", mem.Member);
+            }
+            else if (message is ClusterEvent.UnreachableMember)
+            {
+                var unreachable = (ClusterEvent.UnreachableMember)message;
+                Console.WriteLine("Member detected as unreachable: {0}", unreachable.Member);
+            }
+            else if (message is ClusterEvent.MemberRemoved)
+            {
+                var removed = (ClusterEvent.MemberRemoved)message;
+                Console.WriteLine("Member is Removed: {0}", removed.Member);
+            }
         }
     }
 }

@@ -7,11 +7,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Configuration;
+using Akka.Monitoring;
+using Akka.Monitoring.PerformanceCounters;
+using Akka.Monitoring.StatsD;
 using Akka.Routing;
 using Akka.Util.Internal;
 using AkkaTextAnalizatorCommon.Actors;
 using AkkaTextAnalizatorCommon.Messages;
 using AkkaTextAnalizatorCommon.Utils;
+using Petabridge.Cmd.Host;
 
 namespace AkkaTextAnalizator
 {
@@ -21,6 +25,9 @@ namespace AkkaTextAnalizator
         static void Main(string[] args)
         {
             var actorSystem = ActorSystem.Create("AnalazerActorSystem");
+            var cmd = PetabridgeCmd.Get(actorSystem);
+            cmd.Start();
+            //ActorMonitoringExtension.RegisterMonitor(actorSystem, new ActorPerformanceCountersMonitor());// ActorStatsDMonitor("127.0.0.1",1234));
             // Thread.Sleep(3000);
             var sp = actorSystem.ActorOf(Props.Create<SupervisionActor>(), "SupervisionActor");
 
@@ -45,17 +52,24 @@ namespace AkkaTextAnalizator
                 Console.ReadKey();
                 try
                 {
-                    var result = sp.Ask<int>(i).Result;
-                    if (result != i.Id)
+                    //var result = sp.Ask<int>(i).Result;
+                    //for (int j = 0; j < 10; j++)
                     {
-                        Console.WriteLine($"Error {result}");
+                        ColorConsole.WriteLineGreen(Thread.CurrentThread.ManagedThreadId.ToString());
+                        var result1 = sp.Ask<int>(i);
+                        //var result2 = sp.Ask<int>(i);
+                        //Task.WaitAll(result1, result2);
+                        //if (result1.Result != i.Id)
+                        //{
+                        //    Console.WriteLine($"Error {result1}");
+                        //}
+                        //else if (i.Id < 5) { Console.WriteLine($"Starting {result1}"); }
                     }
-                    else if (i.Id < 5) { Console.WriteLine($"Starting {result}"); }
+                    
                 }
                 catch (Exception e)
                 {
                     ColorConsole.WriteLineGreen("Main " + e.Message);
-                    throw;
                 }
                  //sp.Tell(new TextMessage("", i));
 

@@ -42,6 +42,18 @@
       <HintPath>..\packages\Akka.Cluster.1.3.11\lib\net45\Akka.Cluster.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Akka.Monitoring, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Monitoring.0.7.0\lib\net45\Akka.Monitoring.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Akka.Monitoring.PerformanceCounters, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Monitoring.PerformanceCounters.0.7.0\lib\net45\Akka.Monitoring.PerformanceCounters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Akka.Monitoring.StatsD, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Monitoring.StatsD.0.7.0\lib\net45\Akka.Monitoring.StatsD.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Akka.Remote, Version=1.3.11.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Remote.1.3.11\lib\net45\Akka.Remote.dll</HintPath>
       <Private>True</Private>
@@ -70,8 +82,8 @@
       <HintPath>..\packages\DotNetty.Transport.0.6.0\lib\net45\DotNetty.Transport.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.4.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.4.0\lib\net451\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Helios, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -96,6 +108,18 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Petabridge.Cmd.Common, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Petabridge.Cmd.Common.0.4.1\lib\net45\Petabridge.Cmd.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Petabridge.Cmd.Host, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Petabridge.Cmd.Host.0.4.1\lib\net45\Petabridge.Cmd.Host.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StatsdClient, Version=2.0.68.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StatsdClient.2.0.68\lib\net45\StatsdClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

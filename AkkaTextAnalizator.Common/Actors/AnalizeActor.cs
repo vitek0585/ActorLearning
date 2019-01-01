@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Akka.Actor;
 using AkkaTextAnalizatorCommon.Messages;
 using AkkaTextAnalizatorCommon.Utils;
@@ -12,7 +13,7 @@ namespace AkkaTextAnalizatorCommon.Actors
             Receive<TextMessage>(m =>
             {
                 HandleMessage(m);
-                //Become(BecomeNewBehave);
+                //Become(BecomeNewBehave); change state only one actor
             });
         }
         
@@ -26,10 +27,22 @@ namespace AkkaTextAnalizatorCommon.Actors
 
         private void HandleMessage(TextMessage message)
         {
-            AnalizatorEngine.CalculateTotalSpaces(message.Message, message.Id);
-            //Console.WriteLine($"HandleMessage \n{Sender.Path}\n{Context.Parent.Path}\n");
-            Console.WriteLine(message.Id);
-            Sender.Tell(message.Id);
+            try
+            {
+
+                //AnalizatorEngine.CalculateTotalSpaces(message.Message, message.Id);
+                //Console.WriteLine($"HandleMessage \n{Sender.Path}\n{Context.Parent.Path}\n");
+                ColorConsole.WriteLineYellow(Thread.CurrentThread.ManagedThreadId+" "+message.Id);
+                Thread.Sleep(2000);
+                Sender.Tell(message.Id);
+                //if(message.Id == 9990)
+                //Self.Tell(PoisonPill.Instance);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
         }
 
 

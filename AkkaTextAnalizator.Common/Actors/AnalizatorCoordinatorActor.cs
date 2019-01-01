@@ -19,9 +19,10 @@ namespace AkkaTextAnalizatorCommon.Actors
             Receive<TextMessage>(m =>
             {
                 //count=9;
-                Console.WriteLine(GetHashCode());
+               // Console.WriteLine(GetHashCode());
                 //Console.WriteLine($"Received {m.Id} \n{Sender.Path}\n{Context.Parent.Path}\n{Self.Path}");
-                Sender.Tell(pool.Ask(m, TimeSpan.FromSeconds(5)).Result);
+               // Sender.Tell(pool.Ask(m, TimeSpan.FromSeconds(5)).Result);
+                pool.Forward(m);
 
                 //pool.Tell(m);
             });
